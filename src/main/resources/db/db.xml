@@ -46,11 +46,11 @@
         <!-- 自动扫描mapping.xml文件-->
         <property name="mapperLocations" value="classpath*:com/hongkun/execute/business/mapper/*.xml"/>
         <!-- 自动重命名实体类 -->
-        <property name="typeAliasesPackage" value="com.hongkun.orderservice.business.domain" />
+        <property name="typeAliasesPackage" value="com.hongkun.execute.business.domain" />
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.hongkun.orderservice.business.dao"/>
+        <property name="basePackage" value="com.hongkun.execute.business.dao"/>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
         <constructor-arg index="0" ref="sqlSessionFactory" />

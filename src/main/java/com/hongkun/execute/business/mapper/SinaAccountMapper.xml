@@ -1,0 +1,88 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.SinaAccountDao">
+    <sql id="Base_Column_List">
+            id as id,
+            sina_account as sinaAccount,
+            sina_pass as sinaPass,
+            sina_uid as sinaUid,
+            sina_token as sinaToken,
+            sina_token_time as sianTokenTime,
+            sina_error_code AS sinaErrorCode,
+            sina_error_time AS sinaErrorTime,
+            mstsc_id AS mstscId,
+            sina_end_time AS sinaEndTime,
+            sina_vps_region AS sinaVpsRegion,
+            gz_num AS gzNum,
+            zan_num AS zanNum
+     </sql>
+    <!--批量添加-->
+    <insert id="insertMult" useGeneratedKeys="true" parameterType="java.util.List">
+        insert into sina_account ( sina_account,
+        sina_pass,
+        sina_uid,
+        sina_token,
+        sina_token_time,
+        sina_error_code,
+        sina_error_time,
+        mstsc_id,
+        sina_end_time,
+        sina_vps_region ,
+        gz_num ,
+        zan_num)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.sinaAccount},#{item.sinaPass},#{item.sinaUid},#{item.sinaToken},#{item.sianTokenTime},#{item.sinaErrorCode},
+            #{item.sinaErrorTime},#{item.mstscId},#{item.sinaEndTime},#{item.sinaVpsRegion},#{item.gzNum},#{item.zanNum}
+            )
+        </foreach>
+    </insert>
+
+    <!--查询-->
+    <select id="getSinaAccount" resultType="com.hongkun.execute.business.domain.SinaAccount">
+        select
+        <include refid="Base_Column_List"/>
+        from sina_account sa
+        WHERE
+            sa.sina_vps_region = #{sinaVpsRegion}
+            AND
+                (sa.mstsc_id IS NULL
+                  OR sa.mstsc_id ='')
+            AND (
+                (sa.sina_token IS NULL
+                OR sa.sina_token='')
+                OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
+            )
+    </select>
+
+    <update id="updateSinaAccount" >
+        update sina_account
+        <set>
+            mstsc_id=#{mstscId}
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--按ID修改  -->
+    <update id="updateSinaAccountById" parameterType="com.hongkun.execute.common.dto.UpdateSinaAccountDto">
+        update sina_account
+        <set>
+            <if test="sinaToken != null">
+                sina_token = #{sinaToken},
+                sina_token_time=NOW(),
+            </if>
+            <if test="sinaErrorCode != null">
+                sina_error_code = #{sinaErrorCode},
+                sina_error_time=NOW(),
+            </if>
+            <if test="sinaUid != null">
+                sina_uid = #{sinaUid},
+            </if>
+            <if test="sinaAccount != null">
+                sina_account = #{sinaAccount}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
