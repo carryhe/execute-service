@@ -91,8 +91,11 @@ public class SinaAccountServiceImpl implements SinaAccountService {
     }
 
 	@Override
-	public SinaAccount findQueryOne(Map<String, Object> condition)throws Exception{
-		return sinaAccountDao.findQueryOne(condition);
+	public SinaAccount updatefindQueryOne(Map<String, Object> condition,String mstscId)throws Exception{
+		SinaAccount sinaAccount  = sinaAccountDao.findQueryOne(condition);
+		sinaAccount.setMstscId(mstscId);
+		sinaAccountDao.updateById(sinaAccount);
+		return sinaAccount;
 	}
 
 }

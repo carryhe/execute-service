@@ -34,5 +34,5 @@ public interface SinaAccountService {
      */
     void updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto);
     
-    SinaAccount findQueryOne(Map<String,Object> condition)  throws Exception;
+    SinaAccount updatefindQueryOne(Map<String,Object> condition,String mstscId)  throws Exception;
 }

@@ -97,4 +97,47 @@
         LIMIT 1
     </select>
 
+    <!--按ID修改  -->
+    <update id="updateById" parameterType="com.hongkun.orderservice.business.domain.SinaOrderForward"> 
+        update sina_account 
+            <set> 
+                <if test="sinaAccount != null"> 
+                    sina_account = #{sinaAccount}, 
+                </if> 
+                <if test="sinaPass != null"> 
+                    sina_pass = #{sinaPass}, 
+                </if> 
+                <if test="sinaUid != null"> 
+                    sina_uid = #{sinaUid}, 
+                </if> 
+                <if test="sinaToken != null"> 
+                    sina_token = #{sinaToken},
+                </if> 
+                <if test="sinaTokenTime != null"> 
+                    sina_token_time = #{sinaTokenTime},
+                </if> 
+                <if test="sinaErrorCode != null"> 
+                    sina_error_code = #{sinaErrorCode},
+                </if> 
+                <if test="sinaErrorTime != null"> 
+                    sina_error_time = #{sinaErrorTime},
+                </if> 
+                <if test="mstscId != null"> 
+                    mstsc_id = #{mstscId},
+                </if> 
+                <if test="sinaEndTime != null"> 
+                    sina_end_time = #{sinaEndTime},
+                </if> 
+                <if test="sinaVpsRegion != null"> 
+                    finish_time = #{sinaVpsRegion}
+                </if> 
+                <if test="gzNum != null"> 
+                    gz_num = #{gzNum}
+                </if> 
+                <if test="zanNum != null"> 
+                    zan_num = #{zanNum}
+                </if> 
+            </set> 
+        where id = #{id} 
+    </update>
 </mapper>

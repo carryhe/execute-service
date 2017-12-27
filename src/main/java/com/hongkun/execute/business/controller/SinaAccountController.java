@@ -30,8 +30,8 @@ public class SinaAccountController extends BaseController{
 	 */
     @RequestMapping(value="finQueryOne",method = RequestMethod.POST)
     @ResponseBody
-	public ResultView finQueryOne(String sinaVpsRegion,String security) throws Exception {
-    	String temp = sinaVpsRegion + con;
+	public ResultView finQueryOne(String mstscId,String sinaVpsRegion,String security) throws Exception {
+    	String temp = mstscId + sinaVpsRegion + con;
     	boolean b = verifyAuthority(temp, security);
         if (!b){
             return error("权限认证失败");
@@ -44,7 +44,7 @@ public class SinaAccountController extends BaseController{
 		Map<String,Object> condition = new HashMap<String,Object>();
 		condition.put("time", date);
 		condition.put("region", sinaVpsRegion);
-		SinaAccount sinaAccount = sinaAccountService.findQueryOne(condition);
+		SinaAccount sinaAccount = sinaAccountService.updatefindQueryOne(condition,mstscId);
 		return success(sinaAccount);
 	}
     

@@ -46,4 +46,6 @@ public interface SinaAccountDao {
      * @return
      */
     SinaAccount findQueryOne(Map<String,Object> condition) throws Exception;
+    
+    int updateById(SinaAccount sinaAccount);
 }
