@@ -1,7 +1,11 @@
 package com.hongkun.execute.business.service;
 
+import com.hongkun.execute.business.domain.SinaAccount;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
 import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
+
+import java.util.Map;
+
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -29,4 +33,6 @@ public interface SinaAccountService {
      *
      */
     void updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto);
+    
+    SinaAccount findQueryOne(Map<String,Object> condition)  throws Exception;
 }

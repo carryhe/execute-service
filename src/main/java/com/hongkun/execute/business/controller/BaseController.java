@@ -1,6 +1,8 @@
 package com.hongkun.execute.business.controller;
 
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import com.hongkun.execute.backstage.util.ResultView;
 
 /**
@@ -76,5 +78,18 @@ public class BaseController {
         ResultView resultView = error(message);
         resultView.setData(data);
         return resultView;
+    }
+    
+    /**
+     * 进行访问api的权限控制
+     * @param security
+     * @return
+     */
+    public boolean verifyAuthority(String temp,String security){
+        String md5Hex = DigestUtils.md5Hex(temp);
+        if (!security.equals(md5Hex)) {
+            return false;
+        }
+        return true;
     }
 }

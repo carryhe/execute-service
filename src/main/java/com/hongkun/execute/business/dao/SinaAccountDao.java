@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author HeXG
@@ -38,4 +39,11 @@ public interface SinaAccountDao {
      * @param updateSinaAccountDto
      */
     void updateSinaAccountById(UpdateSinaAccountDto updateSinaAccountDto);
+    
+    /**
+     * 查询一条记录
+     * @param condition
+     * @return
+     */
+    SinaAccount findQueryOne(Map<String,Object> condition) throws Exception;
 }

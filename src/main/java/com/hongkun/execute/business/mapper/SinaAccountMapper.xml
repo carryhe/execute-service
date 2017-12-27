@@ -54,7 +54,7 @@
                 OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
             )
     </select>
-
+    <!--根据id来修改服务器的id-->
     <update id="updateSinaAccount" >
         update sina_account
         <set>
@@ -84,5 +84,17 @@
         </set>
         where id = #{id}
     </update>
+    <select id="findQueryOne" parameterType="map" resultType="com.hongkun.execute.business.domain.SinaAccount">
+        select    
+        id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num                          
+        <!-- <include refid="Base_Column_List"/> -->
+        from sina_account 
+        WHERE sina_token is not null 
+        and sina_token != '' 
+        and sina_error_time > #{time} 
+        and mstsc_id IS NULL 
+        and sina_vps_region = #{region}  
+        LIMIT 1
+    </select>
 
 </mapper>
