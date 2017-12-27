@@ -42,7 +42,7 @@ public class SinaAccountServiceImpl implements SinaAccountService {
         if (CollectionUtils.isNotEmpty(sinaAccounts)) {
             SinaAccount sinaAccount = sinaAccounts.get(0);
             Integer id = sinaAccount.getId();
-            //修改此id用户的使用状态
+            //修改此id用户的服务器状态
             sinaAccountDao.updateSinaAccount(id,mstscId);
             sinaAccountDto = new GetSinaAccountDto();
             sinaAccountDto.setId(id);
@@ -55,8 +55,9 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 
     @Override
     public void updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto) {
-        //根据
+        //根据账户的id来修改账户信息
         sinaAccountDao.updateSinaAccountById(updateSinaAccountDto);
+        //然后根据修改的id来重新清空服务器
         sinaAccountDao.updateSinaAccount(updateSinaAccountDto.getId(),null);
 
     }

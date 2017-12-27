@@ -46,8 +46,6 @@ public class SinaAccountAPI extends BaseController {
         sinaAccountService.saveSinaAccount(jsons);
         return success("success");
     }
-
-
     /**
      * 获取账号信息
      * @param sinaVpsRegion
@@ -58,17 +56,20 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("getSinaAccount")
     @ResponseBody
     public synchronized ResultView getSinaAccount(String sinaVpsRegion,String mstscId,String security){
-        if (StringUtils.isBlank(sinaVpsRegion)||StringUtils.isBlank(mstscId)){
-            return error("传入的参数不能为空");
-        }
-        //@todo 进行加密的常量。
-        String con ="con";
-        String temp = sinaVpsRegion+mstscId+ con;
-        boolean b = verifyAuthority(temp, security);
-        if (!b){
-            return error("权限认证失败");
-        }
+//        if (StringUtils.isBlank(sinaVpsRegion)||StringUtils.isBlank(mstscId)){
+//            return error("传入的参数不能为空");
+//        }
+//        //@todo 进行加密的常量。
+//        String con ="con";
+//        String temp = sinaVpsRegion+mstscId+ con;
+//        boolean b = verifyAuthority(temp, security);
+//        if (!b){
+//            return error("权限认证失败");
+//        }
         GetSinaAccountDto sinaAccountDto=sinaAccountService.getSinaAccount(sinaVpsRegion,mstscId);
+        if (sinaAccountDto==null){
+            return success("您输入的信息，没查询到数据");
+        }
         return success("success",sinaAccountDto);
     }
 
@@ -77,15 +78,13 @@ public class SinaAccountAPI extends BaseController {
     @ResponseBody
     public ResultView updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto, String security){
         //@todo 进行加密的常量。
-        String con ="con";
-        String temp = updateSinaAccountDto + con;
-        boolean b = verifyAuthority(temp, security);
-        if (!b){
-            return error("权限认证失败");
-        }
-
+//        String con ="con";
+//        String temp = updateSinaAccountDto + con;
+//        boolean b = verifyAuthority(temp, security);
+//        if (!b){
+//            return error("权限认证失败");
+//        }
         sinaAccountService.updateSinaAccount(updateSinaAccountDto);
-
         return success("success");
     }
 

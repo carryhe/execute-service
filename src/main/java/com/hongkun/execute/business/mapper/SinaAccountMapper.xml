@@ -54,7 +54,7 @@
                 OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
             )
     </select>
-
+    <!--根据id来修改服务器的id-->
     <update id="updateSinaAccount" >
         update sina_account
         <set>
