@@ -5,12 +5,10 @@ import com.hongkun.execute.business.dao.SinaAccountDao;
 import com.hongkun.execute.business.domain.SinaAccount;
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
-import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,11 +52,11 @@ public class SinaAccountServiceImpl implements SinaAccountService {
     }
 
     @Override
-    public void updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto) {
+    public void updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum) {
         //根据账户的id来修改账户信息
-        sinaAccountDao.updateSinaAccountById(updateSinaAccountDto);
+        sinaAccountDao.updateSinaAccountById(id,sinaToken,sinaErrorCode,sinaUid,sinaAccount,forwardNum);
         //然后根据修改的id来重新清空服务器
-        sinaAccountDao.updateSinaAccount(updateSinaAccountDto.getId(),null);
+        sinaAccountDao.updateSinaAccount(id,null);
 
     }
 

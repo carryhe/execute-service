@@ -42,13 +42,5 @@ public class GetSinaAccountDto {
         this.sinaVpsRegion = sinaVpsRegion;
     }
 
-    @Override
-    public String toString() {
-        return "GetSinaAccountDto{" +
-                "sinaAccount='" + sinaAccount + '\'' +
-                ", sinaPass='" + sinaPass + '\'' +
-                ", id=" + id +
-                ", sinaVpsRegion='" + sinaVpsRegion + '\'' +
-                '}';
-    }
+
 }

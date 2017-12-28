@@ -2,11 +2,9 @@ package com.hongkun.execute.business.service;
 
 import com.hongkun.execute.business.domain.SinaAccount;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
-import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
-
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author HeXG
@@ -32,7 +30,7 @@ public interface SinaAccountService {
      * 根据主键id 来修改账户信息
      *
      */
-    void updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto);
+    void updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum);
     
     SinaAccount updatefindQueryOne(Map<String,Object> condition,String mstscId)  throws Exception;
 }

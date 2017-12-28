@@ -64,7 +64,7 @@
     </update>
 
     <!--按ID修改  -->
-    <update id="updateSinaAccountById" parameterType="com.hongkun.execute.common.dto.UpdateSinaAccountDto">
+    <update id="updateSinaAccountById">
         update sina_account
         <set>
             <if test="sinaToken != null">
