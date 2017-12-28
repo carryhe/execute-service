@@ -1,6 +1,5 @@
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
-import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -34,11 +33,7 @@ public class SinaAccountServiceTest {
 
     @Test
     public void testUpdateSinaAccount(){
-        UpdateSinaAccountDto updateSinaAccountDto=new UpdateSinaAccountDto();
-        updateSinaAccountDto.setId(1);
-        updateSinaAccountDto.setSinaAccount("王蛋");
-        updateSinaAccountDto.setSinaErrorCode("bbb");
-        sinaAccountService.updateSinaAccount(updateSinaAccountDto);
+
     }
 
 }

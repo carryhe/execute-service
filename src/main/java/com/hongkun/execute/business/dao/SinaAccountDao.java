@@ -1,10 +1,7 @@
 package com.hongkun.execute.business.dao;
 
 import com.hongkun.execute.business.domain.SinaAccount;
-import com.hongkun.execute.common.dto.GetSinaAccountDto;
-import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -36,9 +33,14 @@ public interface SinaAccountDao {
 
     /**
      * 修改值根据id
-     * @param updateSinaAccountDto
+     * @param
      */
-    void updateSinaAccountById(UpdateSinaAccountDto updateSinaAccountDto);
+    void updateSinaAccountById(@Param("id") Integer id,
+                               @Param("sinaToken") String sinaToken,
+                               @Param("sinaErrorCode") String sinaErrorCode,
+                               @Param("sinaUid") String sinaUid,
+                               @Param("sinaAccount") String sinaAccount,
+                               @Param("forwardNum") Integer forwardNum);
     
     /**
      * 查询一条记录

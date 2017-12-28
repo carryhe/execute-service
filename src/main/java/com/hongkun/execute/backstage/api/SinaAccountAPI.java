@@ -4,15 +4,12 @@ import com.hongkun.execute.backstage.util.ResultView;
 import com.hongkun.execute.business.controller.BaseController;
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
-import com.hongkun.execute.common.dto.UpdateSinaAccountDto;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.lang.model.element.NestingKind;
 
 /**
  * @author HeXG
@@ -35,7 +32,6 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("saveSinaAccount")
     @ResponseBody
     public ResultView saveSinaAccount(String jsons,String security){
-        /*String sinaAccount, String sinaPass, String sinaUid,String sinaVpsRegion*/
         //@todo 进行加密的常量。
         String con ="con";
         String temp = jsons + con;
@@ -56,16 +52,17 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("getSinaAccount")
     @ResponseBody
     public synchronized ResultView getSinaAccount(String sinaVpsRegion,String mstscId,String security){
-//        if (StringUtils.isBlank(sinaVpsRegion)||StringUtils.isBlank(mstscId)){
-//            return error("传入的参数不能为空");
-//        }
-//        //@todo 进行加密的常量。
-//        String con ="con";
-//        String temp = sinaVpsRegion+mstscId+ con;
-//        boolean b = verifyAuthority(temp, security);
-//        if (!b){
-//            return error("权限认证失败");
-//        }
+
+        //@todo 进行加密的常量。
+        String con ="con";
+        String temp = sinaVpsRegion+mstscId+ con;
+        boolean b = verifyAuthority(temp, security);
+        if (!b){
+            return error("权限认证失败");
+        }
+        if (StringUtils.isBlank(sinaVpsRegion)||StringUtils.isBlank(mstscId)){
+            return error("传入的参数不能为空");
+        }
         GetSinaAccountDto sinaAccountDto=sinaAccountService.getSinaAccount(sinaVpsRegion,mstscId);
         if (sinaAccountDto==null){
             return success("您输入的信息，没查询到数据");
@@ -76,15 +73,15 @@ public class SinaAccountAPI extends BaseController {
 
     @RequestMapping("updateSinaAccount")
     @ResponseBody
-    public ResultView updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto, String security){
+    public ResultView updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum, String security){
         //@todo 进行加密的常量。
-//        String con ="con";
-//        String temp = updateSinaAccountDto + con;
-//        boolean b = verifyAuthority(temp, security);
-//        if (!b){
-//            return error("权限认证失败");
-//        }
-        sinaAccountService.updateSinaAccount(updateSinaAccountDto);
+        String con ="con";
+        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
+        boolean b = verifyAuthority(temp, security);
+        if (!b){
+            return error("权限认证失败");
+        }
+        sinaAccountService.updateSinaAccount(id,sinaToken,sinaErrorCode,sinaUid,sinaAccount,forwardNum);
         return success("success");
     }
 
