@@ -91,6 +91,7 @@
         from sina_account 
         WHERE sina_token is not null 
         and sina_token != '' 
+        and sina_error_code = ''
         and sina_error_time > #{time} 
         and mstsc_id IS NULL 
         and sina_vps_region = #{region}  
