@@ -76,14 +76,21 @@ public class SinaAccountAPI extends BaseController {
 
     @RequestMapping("updateSinaAccount")
     @ResponseBody
-    public ResultView updateSinaAccount(UpdateSinaAccountDto updateSinaAccountDto, String security){
+    public ResultView updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum, String security){
         //@todo 进行加密的常量。
         String con ="con";
-        String temp = updateSinaAccountDto + con;
+        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
             return error("权限认证失败");
         }
+        UpdateSinaAccountDto updateSinaAccountDto = new UpdateSinaAccountDto();
+        updateSinaAccountDto.setId(id);
+        updateSinaAccountDto.setSinaToken(sinaToken);
+        updateSinaAccountDto.setSinaErrorCode(sinaErrorCode);
+        updateSinaAccountDto.setSinaUid(sinaUid);
+        updateSinaAccountDto.setSinaAccount(sinaAccount);
+        updateSinaAccountDto.setForwardNum(forwardNum);
         sinaAccountService.updateSinaAccount(updateSinaAccountDto);
         return success("success");
     }
