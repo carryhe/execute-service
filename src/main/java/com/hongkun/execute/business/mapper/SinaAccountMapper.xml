@@ -99,7 +99,7 @@
     </select>
 
     <!--按ID修改  -->
-    <update id="updateById" parameterType="com.hongkun.orderservice.business.domain.SinaOrderForward"> 
+    <update id="updateById" parameterType="com.hongkun.execute.business.domain.SinaAccount"> 
         update sina_account 
             <set> 
                 <if test="sinaAccount != null"> 
