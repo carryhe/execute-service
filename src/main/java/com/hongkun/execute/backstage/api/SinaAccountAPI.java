@@ -5,8 +5,10 @@ import com.hongkun.execute.business.controller.BaseController;
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -73,7 +75,13 @@ public class SinaAccountAPI extends BaseController {
 
     @RequestMapping("updateSinaAccount")
     @ResponseBody
-    public ResultView updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum, String security){
+    public ResultView updateSinaAccount(Integer id,
+                                        @RequestParam(value = "sinaToken",defaultValue = "") String sinaToken,
+                                        @RequestParam(value = "sinaErrorCode",defaultValue = "")String sinaErrorCode,
+                                        @RequestParam(value = "sinaUid",defaultValue = "")String sinaUid,
+                                        @RequestParam(value = "sinaAccount",defaultValue = "")String sinaAccount,
+                                        @RequestParam(value = "forwardNum",defaultValue = "")Integer forwardNum,
+                                        String security){
         //@todo 进行加密的常量。
         String con ="con";
         String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
