@@ -10,6 +10,17 @@ public class UpdateSinaAccountDto {
     private String sinaErrorCode;
     private String sinaUid;
     private String sinaAccount;
+    private Integer forwardNum;
+    public Integer getForwardNum() {
+        return forwardNum;
+    }
+
+    public void setForwardNum(Integer forwardNum) {
+        this.forwardNum = forwardNum;
+    }
+
+
+
 
     public Integer getId() {
         return id;

@@ -79,7 +79,10 @@
                 sina_uid = #{sinaUid},
             </if>
             <if test="sinaAccount != null">
-                sina_account = #{sinaAccount}
+                sina_account = #{sinaAccount},
+            </if>
+            <if test="forwardNum != null">
+                forward_num = #{forwardNum}
             </if>
         </set>
         where id = #{id}
