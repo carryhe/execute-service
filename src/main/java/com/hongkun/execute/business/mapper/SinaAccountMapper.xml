@@ -142,10 +142,10 @@
                 gz_num = #{gzNum},
             </if>
             <if test="zanNum != null">
-                zan_num = #{zanNum}
+                zan_num = #{zanNum},
             </if>
             <if test="forwardNum != null">
-                forward_num = #{forwardNum}
+                forward_num = #{forwardNum},
             </if>
         </set>
         where id = #{id}
