@@ -92,7 +92,7 @@
     </update>
     <select id="findQueryOne" parameterType="map" resultType="com.hongkun.execute.business.domain.SinaAccount">
         select
-        id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num
+        id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num,forward_num
         <!-- <include refid="Base_Column_List"/> -->
         from sina_account
         WHERE
