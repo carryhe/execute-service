@@ -93,8 +93,6 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 		SinaAccount sinaAccount  = sinaAccountDao.findQueryOne(condition);
 		if(sinaAccount != null) {
 			sinaAccount.setMstscId(mstscId);
-		}
-		if(sinaAccount.getId()!=null) {
 			sinaAccountDao.updateById(sinaAccount);
 		}
 		return sinaAccount;
