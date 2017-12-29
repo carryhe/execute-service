@@ -29,6 +29,7 @@ public class SinaAccountAPI extends BaseController {
     @Resource
     private SinaAccountService sinaAccountService;
 
+    String con = "con";
     /**
      * 向sina_account表中添加信息的api。
      * @param jsons
@@ -99,7 +100,7 @@ public class SinaAccountAPI extends BaseController {
 
 
 
-    String con = "con";
+   
     /**
      * 查找状态为执行中的所有数据
      * @param sinaVpsRegion  地区名
