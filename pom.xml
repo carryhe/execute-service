@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <packaging>war</packaging>
     <groupId>com.hongkun</groupId>
     <artifactId>execute-service</artifactId>
     <version>1.0</version>
@@ -199,11 +199,19 @@
     </dependencies>
 
     <build>
-        <finalName>order-service</finalName>
+        <finalName>execute-service</finalName>
         <resources>
             <!-- 将mapper等文件打包时引入 -->
             <resource>
                 <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>

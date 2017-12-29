@@ -5,7 +5,6 @@ import com.hongkun.execute.business.controller.BaseController;
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +18,7 @@ import javax.annotation.Resource;
  * 处理
  */
 @Controller
-@RequestMapping("sinaAccountAPI")
+@RequestMapping("api/sinaAccount")
 public class SinaAccountAPI extends BaseController {
 
     @Resource
