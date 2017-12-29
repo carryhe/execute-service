@@ -93,7 +93,7 @@
         <!-- <include refid="Base_Column_List"/> -->
         from sina_account 
         WHERE 
-        and sina_token != '' 
+            sina_token != '' 
         and sina_error_code = ''
         and sina_error_time > #{time} 
         and mstsc_id = ''
