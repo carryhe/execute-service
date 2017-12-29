@@ -92,7 +92,9 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 	public SinaAccount updatefindQueryOne(Map<String, Object> condition,String mstscId)throws Exception{
 		SinaAccount sinaAccount  = sinaAccountDao.findQueryOne(condition);
 		sinaAccount.setMstscId(mstscId);
-		sinaAccountDao.updateById(sinaAccount);
+		if(sinaAccount.getId()!=null) {
+			sinaAccountDao.updateById(sinaAccount);
+		}
 		return sinaAccount;
 	}
 
