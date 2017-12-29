@@ -23,7 +23,7 @@ import java.util.Map;
  * 处理
  */
 @Controller
-@RequestMapping("/api/sinaAccount/")
+@RequestMapping("api/sinaAccount/")
 public class SinaAccountAPI extends BaseController {
 
     @Resource

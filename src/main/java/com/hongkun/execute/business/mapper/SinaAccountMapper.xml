@@ -70,21 +70,21 @@
     <update id="updateSinaAccountById">
         update sina_account
         <set>
-            <if test="sinaToken != null">
+            <if test="sinaToken != ''">
                 sina_token = #{sinaToken},
                 sina_token_time=NOW(),
             </if>
-            <if test="sinaErrorCode != null">
+            <if test="sinaErrorCode != ''">
                 sina_error_code = #{sinaErrorCode},
                 sina_error_time=NOW(),
             </if>
-            <if test="sinaUid != null">
+            <if test="sinaUid != ''">
                 sina_uid = #{sinaUid},
             </if>
-            <if test="sinaAccount != null">
+            <if test="sinaAccount != ''">
                 sina_account = #{sinaAccount},
             </if>
-            <if test="forwardNum != null">
+            <if test="forwardNum != ''">
                 forward_num = #{forwardNum}
             </if>
         </set>

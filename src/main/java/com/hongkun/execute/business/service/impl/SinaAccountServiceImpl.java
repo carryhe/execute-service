@@ -56,7 +56,7 @@ public class SinaAccountServiceImpl implements SinaAccountService {
         //根据账户的id来修改账户信息
         sinaAccountDao.updateSinaAccountById(id,sinaToken,sinaErrorCode,sinaUid,sinaAccount,forwardNum);
         //然后根据修改的id来重新清空服务器
-        sinaAccountDao.updateSinaAccount(id,null);
+        sinaAccountDao.updateSinaAccount(id,"");
 
     }
 
