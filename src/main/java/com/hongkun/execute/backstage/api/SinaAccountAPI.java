@@ -23,7 +23,7 @@ import java.util.Map;
  * 处理
  */
 @Controller
-@RequestMapping("api/sinaAccount")
+@RequestMapping("/api/sinaAccount/")
 public class SinaAccountAPI extends BaseController {
 
     @Resource
@@ -107,9 +107,9 @@ public class SinaAccountAPI extends BaseController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="finQueryOne",method = RequestMethod.POST)
+    @RequestMapping(value="/findQueryOne",method = RequestMethod.POST)
     @ResponseBody
-    public ResultView finQueryOne(String mstscId,String sinaVpsRegion,String security) throws Exception {
+    public ResultView findQueryOne(String mstscId,String sinaVpsRegion,String security) throws Exception {
         String temp = mstscId + sinaVpsRegion + con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
