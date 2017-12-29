@@ -20,7 +20,7 @@ public class SinaAccount implements Serializable {
     //新浪token值
     private String sinaToken;
     //最后登录时间
-    private Date sianTokenTime;
+    private Date sinaTokenTime;
     //错误的code
     private String sinaErrorCode;
     //错误时间
@@ -89,12 +89,12 @@ public class SinaAccount implements Serializable {
         this.sinaToken = sinaToken;
     }
 
-    public Date getSianTokenTime() {
-        return sianTokenTime;
+    public Date getSinaTokenTime() {
+        return sinaTokenTime;
     }
 
-    public void setSianTokenTime(Date sianTokenTime) {
-        this.sianTokenTime = sianTokenTime;
+    public void setSinaTokenTime(Date sinaTokenTime) {
+        this.sinaTokenTime = sinaTokenTime;
     }
 
     public String getSinaErrorCode() {
@@ -161,7 +161,7 @@ public class SinaAccount implements Serializable {
                 ", sinaPass='" + sinaPass + '\'' +
                 ", sinaUid='" + sinaUid + '\'' +
                 ", sinaToken='" + sinaToken + '\'' +
-                ", sianTokenTime=" + sianTokenTime +
+                ", sianTokenTime=" + sinaTokenTime +
                 ", sinaErrorCode='" + sinaErrorCode + '\'' +
                 ", sinaErrorTime=" + sinaErrorTime +
                 ", mstscId='" + mstscId + '\'' +

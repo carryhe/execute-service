@@ -1,20 +1,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hongkun.execute.business.dao.SinaAccountDao">
     <sql id="Base_Column_List">
-            id as id,
-            sina_account as sinaAccount,
-            sina_pass as sinaPass,
-            sina_uid as sinaUid,
-            sina_token as sinaToken,
-            sina_token_time as sianTokenTime,
-            sina_error_code AS sinaErrorCode,
-            sina_error_time AS sinaErrorTime,
-            mstsc_id AS mstscId,
-            sina_end_time AS sinaEndTime,
-            sina_vps_region AS sinaVpsRegion,
-            gz_num AS gzNum,
-            zan_num AS zanNum
-     </sql>
+        id as id,
+        sina_account as sinaAccount,
+        sina_pass as sinaPass,
+        sina_uid as sinaUid,
+        sina_token as sinaToken,
+        sina_token_time as sianTokenTime,
+        sina_error_code AS sinaErrorCode,
+        sina_error_time AS sinaErrorTime,
+        mstsc_id AS mstscId,
+        sina_end_time AS sinaEndTime,
+        sina_vps_region AS sinaVpsRegion,
+        gz_num AS gzNum,
+        zan_num AS zanNum
+    </sql>
     <!--批量添加-->
     <insert id="insertMult" useGeneratedKeys="true" parameterType="java.util.List">
         insert into sina_account ( sina_account,
@@ -44,15 +44,15 @@
         <include refid="Base_Column_List"/>
         from sina_account sa
         WHERE
-            sa.sina_vps_region = #{sinaVpsRegion}
-            AND
-                (sa.mstsc_id IS NULL
-                  OR sa.mstsc_id ='')
-            AND (
-                (sa.sina_token IS NULL
-                OR sa.sina_token='')
-                OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
-            )
+        sa.sina_vps_region = #{sinaVpsRegion}
+        AND
+        (sa.mstsc_id IS NULL
+        OR sa.mstsc_id ='')
+        AND (
+        (sa.sina_token IS NULL
+        OR sa.sina_token='')
+        OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
+        )
     </select>
     <!--根据id来修改服务器的id-->
     <update id="updateSinaAccount" >
@@ -88,59 +88,60 @@
         where id = #{id}
     </update>
     <select id="findQueryOne" parameterType="map" resultType="com.hongkun.execute.business.domain.SinaAccount">
-        select    
-        id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num                          
+        select
+        id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num
         <!-- <include refid="Base_Column_List"/> -->
-        from sina_account 
-        WHERE sina_token != '' 
+        from sina_account
+        WHERE
+        sina_token != ''
         and sina_error_code = ''
-        and sina_token_time > #{time} 
+        and sina_token_time > #{time}
         and mstsc_id = ''
-        and sina_vps_region = #{region}  
+        and sina_vps_region = #{region}
         LIMIT 1
     </select>
 
     <!--按ID修改  -->
-    <update id="updateById" parameterType="com.hongkun.execute.business.domain.SinaAccount"> 
-        update sina_account 
-            <set> 
-                <if test="sinaAccount != null"> 
-                    sina_account = #{sinaAccount}, 
-                </if> 
-                <if test="sinaPass != null"> 
-                    sina_pass = #{sinaPass}, 
-                </if> 
-                <if test="sinaUid != null"> 
-                    sina_uid = #{sinaUid}, 
-                </if> 
-                <if test="sinaToken != null"> 
-                    sina_token = #{sinaToken},
-                </if> 
-                <if test="sinaTokenTime != null"> 
-                    sina_token_time = #{sinaTokenTime},
-                </if> 
-                <if test="sinaErrorCode != null"> 
-                    sina_error_code = #{sinaErrorCode},
-                </if> 
-                <if test="sinaErrorTime != null"> 
-                    sina_error_time = #{sinaErrorTime},
-                </if> 
-                <if test="mstscId != null"> 
-                    mstsc_id = #{mstscId},
-                </if> 
-                <if test="sinaEndTime != null"> 
-                    sina_end_time = #{sinaEndTime},
-                </if> 
-                <if test="sinaVpsRegion != null"> 
-                    finish_time = #{sinaVpsRegion}
-                </if> 
-                <if test="gzNum != null"> 
-                    gz_num = #{gzNum}
-                </if> 
-                <if test="zanNum != null"> 
-                    zan_num = #{zanNum}
-                </if> 
-            </set> 
-        where id = #{id} 
+    <update id="updateById" parameterType="com.hongkun.execute.business.domain.SinaAccount">
+        update sina_account
+        <set>
+            <if test="sinaAccount != null">
+                sina_account = #{sinaAccount},
+            </if>
+            <if test="sinaPass != null">
+                sina_pass = #{sinaPass},
+            </if>
+            <if test="sinaUid != null">
+                sina_uid = #{sinaUid},
+            </if>
+            <if test="sinaToken != null">
+                sina_token = #{sinaToken},
+            </if>
+            <if test="sinaTokenTime != null">
+                sina_token_time = #{sinaTokenTime},
+            </if>
+            <if test="sinaErrorCode != null">
+                sina_error_code = #{sinaErrorCode},
+            </if>
+            <if test="sinaErrorTime != null">
+                sina_error_time = #{sinaErrorTime},
+            </if>
+            <if test="mstscId != null">
+                mstsc_id = #{mstscId},
+            </if>
+            <if test="sinaEndTime != null">
+                sina_end_time = #{sinaEndTime},
+            </if>
+            <if test="sinaVpsRegion != null">
+                sina_vps_region = #{sinaVpsRegion},
+            </if>
+            <if test="gzNum != null">
+                gz_num = #{gzNum},
+            </if>
+            <if test="zanNum != null">
+                zan_num = #{zanNum}
+            </if>
+        </set>
+        where id = #{id}
     </update>
 </mapper>
