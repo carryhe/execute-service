@@ -1,7 +1,9 @@
 package com.hongkun.execute.business.dao;
 
 import com.hongkun.execute.business.domain.SinaAccount;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,8 @@ import java.util.Map;
  * @author HeXG
  * @since 2017/12/26
  */
+@Mapper
+@Component
 public interface SinaAccountDao {
 
     /**
