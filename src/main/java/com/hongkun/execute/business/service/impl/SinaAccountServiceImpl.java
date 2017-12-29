@@ -91,7 +91,9 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 	@Override
 	public SinaAccount updatefindQueryOne(Map<String, Object> condition,String mstscId)throws Exception{
 		SinaAccount sinaAccount  = sinaAccountDao.findQueryOne(condition);
-		sinaAccount.setMstscId(mstscId);
+		if(sinaAccount != null) {
+			sinaAccount.setMstscId(mstscId);
+		}
 		if(sinaAccount.getId()!=null) {
 			sinaAccountDao.updateById(sinaAccount);
 		}
