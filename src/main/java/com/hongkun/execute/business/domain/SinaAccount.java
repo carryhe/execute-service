@@ -37,8 +37,18 @@ public class SinaAccount implements Serializable {
     private Integer zanNum;
     //是否有用户在使用此账号
     private Integer sign;
+    
+    private int forwardNum;
 
-    public Integer getSign() {
+    public int getForwardNum() {
+		return forwardNum;
+	}
+
+	public void setForwardNum(int forwardNum) {
+		this.forwardNum = forwardNum;
+	}
+
+	public Integer getSign() {
         return sign;
     }
 
