@@ -59,9 +59,6 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("getSinaAccount")
     @ResponseBody
     public synchronized ResultView getSinaAccount(String sinaVpsRegion,String mstscId,String security){
-
-        //@todo 进行加密的常量。
-        String con ="con";
         String temp = sinaVpsRegion+mstscId+ con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
@@ -87,8 +84,6 @@ public class SinaAccountAPI extends BaseController {
                                         @RequestParam(value = "sinaAccount",defaultValue = "")String sinaAccount,
                                         @RequestParam(value = "forwardNum",defaultValue = "")Integer forwardNum,
                                         String security){
-        //@todo 进行加密的常量。
-        String con ="con";
         String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
