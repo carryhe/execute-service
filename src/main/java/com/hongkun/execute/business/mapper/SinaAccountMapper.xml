@@ -145,7 +145,7 @@
                 zan_num = #{zanNum},
             </if>
             <if test="forwardNum != null">
-                forward_num = #{forwardNum},
+                forward_num = #{forwardNum}
             </if>
         </set>
         where id = #{id}
