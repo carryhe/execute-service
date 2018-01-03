@@ -51,26 +51,4 @@
         <property name="defaultEncoding" value="UTF-8"></property>
         <property name="maxUploadSize" value="1024000"></property>
     </bean>
-
-    <!-- 配置使用 SimpleMappingExceptionResolver 来映射异常 -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionAttribute" value="ex"></property>
-        <property name="exceptionMappings">
-            <props>
-                <prop key="java.lang.Exception">404</prop>
-                <prop key="java.lang.Throwable">404</prop>
-            </props>
-        </property>
-        <property name="statusCodes">
-            <props>
-                <prop key="404">404</prop>
-            </props>
-        </property>
-        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
-        <property name="warnLogCategory" value="WARN"></property>
-        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
-        <property name="defaultErrorView" value="404"></property>
-        <!-- 默认HTTP状态码 -->
-        <property name="defaultStatusCode" value="404"></property>
-    </bean>
 </beans>

@@ -49,11 +49,9 @@
         WHERE
         sa.sina_vps_region = #{sinaVpsRegion}
         AND
-        (sa.mstsc_id IS NULL
-        OR sa.mstsc_id ='')
+        (sa.mstsc_id ='' or sa.mstsc_id=#{mstscId})
         AND (
-        (sa.sina_token IS NULL
-        OR sa.sina_token='')
+        sa.sina_token=''
         OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
         )
     </select>
@@ -99,7 +97,7 @@
         sina_token != ''
         and sina_error_code = ''
         and sina_token_time > #{time}
-        and mstsc_id = ''
+        and (mstsc_id = '' or mstsc_id=#{msctscId})
         and sina_vps_region = #{region}
         LIMIT 1
     </select>

@@ -36,7 +36,7 @@ public class SinaAccountServiceImpl implements SinaAccountService {
         /**
          * 获取到一个账号，然后在改变账号的使用状态
          */
-        List<SinaAccount> sinaAccounts = sinaAccountDao.getSinaAccount(sinaVpsRegion);
+        List<SinaAccount> sinaAccounts = sinaAccountDao.getSinaAccount(mstscId, sinaVpsRegion);
         if (CollectionUtils.isNotEmpty(sinaAccounts)) {
             SinaAccount sinaAccount = sinaAccounts.get(0);
             Integer id = sinaAccount.getId();

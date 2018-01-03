@@ -28,7 +28,7 @@ public interface SinaAccountDao {
      * @param sinaVpsRegion
      * @return
      */
-    public List<SinaAccount> getSinaAccount(@Param("sinaVpsRegion") String sinaVpsRegion);
+    public List<SinaAccount> getSinaAccount(@Param("mstscId") String mstscId, @Param("sinaVpsRegion") String sinaVpsRegion);
 
     /**
      * 修改用户的sina状态

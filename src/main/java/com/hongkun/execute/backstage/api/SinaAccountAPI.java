@@ -39,15 +39,16 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("saveSinaAccount")
     @ResponseBody
     public ResultView saveSinaAccount(String jsons,String security){
+        throw new NullPointerException("异常");
         //@todo 进行加密的常量。
-        String con ="con";
-        String temp = jsons + con;
-        boolean b = verifyAuthority(temp, security);
-        if (!b){
-            return error("权限认证失败");
-        }
-        sinaAccountService.saveSinaAccount(jsons);
-        return success("success");
+//        String con ="con";
+//        String temp = jsons + con;
+//        boolean b = verifyAuthority(temp, security);
+//        if (!b){
+//            return error("权限认证失败");
+//        }
+//        sinaAccountService.saveSinaAccount(jsons);
+//        return success("success");
     }
     /**
      * 获取账号信息
@@ -118,6 +119,7 @@ public class SinaAccountAPI extends BaseController {
         //创建map对象
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("time", date);
+        condition.put("mstscId", mstscId);
         condition.put("region", sinaVpsRegion);
         SinaAccount sinaAccount = sinaAccountService.updatefindQueryOne(condition,mstscId);
         return success(sinaAccount);
