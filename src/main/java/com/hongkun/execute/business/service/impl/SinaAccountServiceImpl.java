@@ -53,11 +53,8 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 
     @Override
     public void updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum) {
-        //根据账户的id来修改账户信息
+        //根据账户的id来修改账户信息并清除mstscId
         sinaAccountDao.updateSinaAccountById(id,sinaToken,sinaErrorCode,sinaUid,sinaAccount,forwardNum);
-        //然后根据修改的id来重新清空服务器
-        sinaAccountDao.updateSinaAccount(id,"");
-
     }
 
 

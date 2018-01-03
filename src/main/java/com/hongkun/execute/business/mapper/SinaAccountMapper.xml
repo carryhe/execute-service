@@ -68,6 +68,7 @@
     <update id="updateSinaAccountById">
         update sina_account
         <set>
+            mstsc_id='',
             <if test="sinaToken != ''">
                 sina_token = #{sinaToken},
                 sina_token_time=NOW(),
@@ -83,7 +84,7 @@
                 sina_account = #{sinaAccount},
             </if>
             <if test="forwardNum != ''">
-                forward_num = #{forwardNum}
+                forward_num = forward_num+#{forwardNum}
             </if>
         </set>
         where id = #{id}
