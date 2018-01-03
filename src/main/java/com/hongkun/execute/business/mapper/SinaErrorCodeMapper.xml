@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.SinaErrorCodeDao">
+
+    <!--查询-->
+    <select id="findSinaErrorCode" resultType="com.hongkun.execute.business.domain.SinaErrorCode">
+      SELECT
+	  *
+      FROM
+	   sina_error_code
+    </select>
+
+</mapper>

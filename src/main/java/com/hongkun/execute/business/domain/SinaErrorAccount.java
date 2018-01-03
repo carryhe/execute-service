@@ -1,16 +1,30 @@
 package com.hongkun.execute.business.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author HeXG
- * @since 2017/12/26
+ * @since 2018/1/3
  */
-public class SinaAccount implements Serializable {
-
-    //主键id
-    private Integer id;
+public class SinaErrorAccount {
+   /*
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'sina_account的主键',
+            `sina_account` varchar(255) NOT NULL COMMENT '账号',
+            `sina_pass` varchar(255) NOT NULL COMMENT '账户密码',
+            `sina_uid` varchar(255) NOT NULL COMMENT '用户id',
+            `sina_token` varchar(255) NOT NULL DEFAULT '',
+            `sina_token_time` datetime DEFAULT NULL COMMENT '最后 登录时间',
+            `sina_error_code` varchar(255) NOT NULL DEFAULT '',
+            `sina_error_time` datetime DEFAULT NULL,
+            `mstsc_id` varchar(255) NOT NULL DEFAULT '' COMMENT '服务器的id,默认为空',
+            `sina_end_time` datetime DEFAULT NULL,
+            `sina_vps_region` varchar(255) NOT NULL DEFAULT '',
+            `gz_num` int(11) NOT NULL DEFAULT '0',
+            `zan_num` int(11) NOT NULL DEFAULT '0',
+            `forward_num` int(11) NOT NULL DEFAULT '0',
+     */
+   //主键id
+   private Integer id;
     //新浪账号
     private String sinaAccount;
     //账号密码
@@ -35,16 +49,16 @@ public class SinaAccount implements Serializable {
     private Integer gzNum;
     //
     private Integer zanNum;
-    
+
     private int forwardNum;
 
     public int getForwardNum() {
-		return forwardNum;
-	}
+        return forwardNum;
+    }
 
-	public void setForwardNum(int forwardNum) {
-		this.forwardNum = forwardNum;
-	}
+    public void setForwardNum(int forwardNum) {
+        this.forwardNum = forwardNum;
+    }
 
     public Integer getId() {
         return id;
@@ -150,22 +164,5 @@ public class SinaAccount implements Serializable {
         this.zanNum = zanNum;
     }
 
-    @Override
-    public String toString() {
-        return "SinaAccount{" +
-                "id=" + id +
-                ", sinaAccount='" + sinaAccount + '\'' +
-                ", sinaPass='" + sinaPass + '\'' +
-                ", sinaUid='" + sinaUid + '\'' +
-                ", sinaToken='" + sinaToken + '\'' +
-                ", sianTokenTime=" + sinaTokenTime +
-                ", sinaErrorCode='" + sinaErrorCode + '\'' +
-                ", sinaErrorTime=" + sinaErrorTime +
-                ", mstscId='" + mstscId + '\'' +
-                ", sinaEndTime=" + sinaEndTime +
-                ", sinaVpsRegion='" + sinaVpsRegion + '\'' +
-                ", gzNum=" + gzNum +
-                ", zanNum=" + zanNum +
-                '}';
-    }
+
 }

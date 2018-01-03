@@ -149,4 +149,24 @@
         </set>
         where id = #{id}
     </update>
+
+
+    <!--根据errorCode来查询出错误的账户信息-->
+    <select id="findErrorAccountByErrorCode" resultType="com.hongkun.execute.business.domain.SinaAccount">
+        select
+        *
+        from sina_account sa
+        WHERE
+        sa.sina_error_code=#{errorCode}
+    </select>
+
+    <delete id="delErrorAccountByErrorCode">
+    DELETE
+    FROM
+        sina_account
+    WHERE
+        sina_error_code = #{errorCode}
+    </delete>
+
+
 </mapper>

@@ -54,4 +54,17 @@ public interface SinaAccountDao {
     SinaAccount findQueryOne(Map<String,Object> condition) throws Exception;
     
     int updateById(SinaAccount sinaAccount);
+
+    /**
+     * 根据errorCode来查询出错误的账户信息
+     * @param errorCode
+     * @return
+     */
+    List<SinaAccount> findErrorAccountByErrorCode(@Param("errorCode") String errorCode);
+
+    /**
+     * 删除errorCode的订单
+     * @param errorCode
+     */
+    void delErrorAccountByErrorCode(@Param("errorCode")String errorCode);
 }

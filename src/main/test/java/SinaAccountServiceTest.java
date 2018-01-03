@@ -20,7 +20,7 @@ public class SinaAccountServiceTest {
 
     @Test
     public void testSaveSinaAccount(){
-        String string ="{\"success\":true,\"message\":null,\"data\":[{\"id\":1,\"accountName\":\"王皓\",\"accountPassword\":\"123\",\"accountType\":\"1\",\"accountAddTime\":\"2017-12-26 12:51:06.0\",\"region\":\"山西\",\"state\":\"自用账号\"},{\"id\":2,\"accountName\":\"李四\",\"accountPassword\":\"123\",\"accountType\":\"1\",\"accountAddTime\":\"2017-12-26 12:51:23.0\",\"region\":\"山西\",\"state\":\"自用账号\"}]}";
+        String string ="";
         sinaAccountService.saveSinaAccount(string);
 
     }
@@ -33,6 +33,7 @@ public class SinaAccountServiceTest {
 
     @Test
     public void testUpdateSinaAccount(){
+
 
     }
 

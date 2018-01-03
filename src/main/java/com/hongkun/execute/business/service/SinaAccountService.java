@@ -4,6 +4,7 @@ import com.hongkun.execute.business.domain.SinaAccount;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,4 +34,17 @@ public interface SinaAccountService {
     void updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum);
     
     SinaAccount updatefindQueryOne(Map<String,Object> condition,String mstscId)  throws Exception;
+
+    /**
+     * 根据errorCode来查询订单
+     * @param errorCode
+     * @return
+     */
+    List<SinaAccount> findErrorAccountByErrorCode(String errorCode);
+
+    /**
+     * 根据error来删除
+     * @param errorCode
+     */
+    void delErrorAccountByErrorCode(String errorCode);
 }

@@ -95,4 +95,14 @@ public class SinaAccountServiceImpl implements SinaAccountService {
 		return sinaAccount;
 	}
 
+    @Override
+    public List<SinaAccount> findErrorAccountByErrorCode(String errorCode) {
+        return sinaAccountDao.findErrorAccountByErrorCode(errorCode);
+    }
+
+    @Override
+    public void delErrorAccountByErrorCode(String errorCode) {
+        sinaAccountDao.delErrorAccountByErrorCode(errorCode);
+    }
+
 }

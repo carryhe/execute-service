@@ -39,16 +39,14 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("saveSinaAccount")
     @ResponseBody
     public ResultView saveSinaAccount(String jsons,String security){
-        throw new NullPointerException("异常");
         //@todo 进行加密的常量。
-//        String con ="con";
-//        String temp = jsons + con;
-//        boolean b = verifyAuthority(temp, security);
-//        if (!b){
-//            return error("权限认证失败");
-//        }
-//        sinaAccountService.saveSinaAccount(jsons);
-//        return success("success");
+        String temp = jsons + con;
+        boolean b = verifyAuthority(temp, security);
+        if (!b){
+            return error("权限认证失败");
+        }
+        sinaAccountService.saveSinaAccount(jsons);
+        return success("success");
     }
     /**
      * 获取账号信息
@@ -85,11 +83,11 @@ public class SinaAccountAPI extends BaseController {
                                         @RequestParam(value = "sinaAccount",defaultValue = "")String sinaAccount,
                                         @RequestParam(value = "forwardNum",defaultValue = "")Integer forwardNum,
                                         String security){
-//        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
-//        boolean b = verifyAuthority(temp, security);
-//        if (!b){
-//            return error("权限认证失败");
-//        }
+        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
+        boolean b = verifyAuthority(temp, security);
+        if (!b){
+            return error("权限认证失败");
+        }
         sinaAccountService.updateSinaAccount(id,sinaToken,sinaErrorCode,sinaUid,sinaAccount,forwardNum);
         return success("success");
     }

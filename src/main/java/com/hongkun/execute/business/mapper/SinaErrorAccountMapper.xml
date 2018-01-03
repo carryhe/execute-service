@@ -1,0 +1,29 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.SinaErrorAccountDao">
+    <!--批量添加-->
+    <insert id="insertErrorSinaAccount"  parameterType="java.util.List">
+        insert into sina_error_account ( sina_account,
+        sina_pass,
+        sina_uid,
+        sina_token,
+        sina_token_time,
+        sina_error_code,
+        sina_error_time,
+        mstsc_id,
+        sina_end_time,
+        sina_vps_region ,
+        gz_num ,
+        zan_num,
+        forward_num
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.sinaAccount},#{item.sinaPass},#{item.sinaUid},#{item.sinaToken},#{item.sinaTokenTime},#{item.sinaErrorCode},
+            #{item.sinaErrorTime},#{item.mstscId},#{item.sinaEndTime},#{item.sinaVpsRegion},#{item.gzNum},#{item.zanNum},#{item.forwardNum}
+            )
+        </foreach>
+    </insert>
+
+
+</mapper>
