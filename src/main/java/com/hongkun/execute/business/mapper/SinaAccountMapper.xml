@@ -69,18 +69,18 @@
         update sina_account
         <set>
             mstsc_id='',
-            <if test="sinaToken != ''and forwardNum != null">
+            <if test="sinaToken != '' and sinaToken != null">
                 sina_token = #{sinaToken},
                 sina_token_time=NOW(),
             </if>
-            <if test="sinaErrorCode != ''and forwardNum != null">
+            <if test="sinaErrorCode != '' and sinaErrorCode != null">
                 sina_error_code = #{sinaErrorCode},
                 sina_error_time=NOW(),
             </if>
-            <if test="sinaUid != ''and forwardNum != null">
+            <if test="sinaUid != '' and sinaUid != null">
                 sina_uid = #{sinaUid},
             </if>
-            <if test="sinaAccount != ''and forwardNum != null">
+            <if test="sinaAccount != ''and sinaAccount != null">
                 sina_account = #{sinaAccount},
             </if>
             <if test="forwardNum != null">
