@@ -45,6 +45,9 @@ public class SinaAccountAPI extends BaseController {
         if (!b){
             return error("权限认证失败");
         }
+        if (StringUtils.isBlank(jsons)){
+            return error("传入的参数不能为空");
+        }
         sinaAccountService.saveSinaAccount(jsons);
         return success("success");
     }

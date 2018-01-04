@@ -35,7 +35,7 @@
         values
         <foreach collection="list" item="item" index="index" separator=",">
             (
-            #{item.sinaAccount},#{item.sinaPass},#{item.sinaUid},#{item.sinaToken},#{item.sianTokenTime},#{item.sinaErrorCode},
+            #{item.sinaAccount},#{item.sinaPass},#{item.sinaUid},#{item.sinaToken},#{item.sinaTokenTime},#{item.sinaErrorCode},
             #{item.sinaErrorTime},#{item.mstscId},#{item.sinaEndTime},#{item.sinaVpsRegion},#{item.gzNum},#{item.zanNum},#{item.forwardNum}
             )
         </foreach>
@@ -89,6 +89,7 @@
         </set>
         where id = #{id}
     </update>
+
     <select id="findQueryOne" parameterType="map" resultType="com.hongkun.execute.business.domain.SinaAccount">
         select
         id,sina_account,sina_pass,sina_uid,sina_token,sina_token_time,sina_error_code,sina_error_time,mstsc_id,sina_end_time,sina_vps_region,gz_num,zan_num,forward_num
@@ -160,6 +161,7 @@
         sa.sina_error_code=#{errorCode}
     </select>
 
+    <!--根据errorCode删除订单-->
     <delete id="delErrorAccountByErrorCode">
     DELETE
     FROM
