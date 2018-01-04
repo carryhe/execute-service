@@ -25,9 +25,6 @@ public class OpsSinaAccountTask {
     @Resource
     private SinaErrorAccountService sinaErrorAccountService;
 
-    /**
-     * 每20秒执行一次修改表中schedule的进度
-     */
     @Scheduled(fixedRate = 1000 * 20)
     public void dealErrorAccount() {
         //查询errorCode

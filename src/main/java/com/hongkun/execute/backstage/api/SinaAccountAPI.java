@@ -84,9 +84,9 @@ public class SinaAccountAPI extends BaseController {
                                         @RequestParam(value = "sinaErrorCode",defaultValue = "")String sinaErrorCode,
                                         @RequestParam(value = "sinaUid",defaultValue = "")String sinaUid,
                                         @RequestParam(value = "sinaAccount",defaultValue = "")String sinaAccount,
-                                        @RequestParam(value = "forwardNum",defaultValue = "")Integer forwardNum,
+                                        Integer forwardNum,
                                         String security){
-        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+forwardNum + con;
+        String temp = id+sinaToken+sinaErrorCode+sinaUid+sinaAccount+(forwardNum==null?"":forwardNum )+ con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
             return error("权限认证失败");
