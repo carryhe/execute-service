@@ -7,6 +7,7 @@ import com.hongkun.execute.business.service.SinaErrorCodeService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,6 +30,7 @@ public class OpsSinaAccountTask {
      * 移动错误的订单
      */
     @Scheduled(fixedRate = 1000 * 20)
+    @Transactional(rollbackFor = Exception.class)
     public void dealErrorAccount() {
         //查询errorCode
         List<String> errorCodes = sinaErrorCodeService.findSinaErrorCode();

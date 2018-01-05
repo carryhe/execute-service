@@ -27,12 +27,14 @@ public class AEncoding implements Filter {
         
     }
 
-	
+
+	@Override
 	public void destroy() {
 		
 	}
 
 	
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		//1.基于http协议的
 		HttpServletRequest req =  (HttpServletRequest) request;
@@ -99,6 +101,7 @@ public class AEncoding implements Filter {
 	}
 
 	
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 		
 	}

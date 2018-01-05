@@ -6,6 +6,7 @@ import com.hongkun.execute.business.service.SinaAccountService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class OpsAccountTask {
      * 将account中的账号添加到sina_account中
      */
    @Scheduled(fixedRate = 1000 * 20)
+   @Transactional(rollbackFor = Exception.class)
     public void dealAccountNum(){
         //查询sina_account账户，返回账户的条数，地区
         List<SinaAccountNumAndRegion> numAndRegions =sinaAccountService.findSinaAccountNumAndRegion();
