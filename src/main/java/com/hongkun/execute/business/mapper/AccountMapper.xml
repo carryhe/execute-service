@@ -1,0 +1,51 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.AccountDao">
+    <sql id="Base_Column_List">
+        id,
+        account_name,
+        account_password,
+        account_uid,
+        account_add_time,
+        region,
+        state
+    </sql>
+
+    <!--批量添加  -->
+    <insert id="saveAccount" parameterType="java.util.List">
+        insert into account (
+        account_name,
+        account_password,
+        account_uid,
+        account_add_time,
+        region
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+              #{item.accountName},#{item.accountPassword},#{item.accountUid},NOW(),#{item.region}
+            )
+        </foreach>
+    </insert>
+
+    <!--根据条件查询account-->
+    <select id="findAccountByRegionLimit" parameterType="map" resultType="com.hongkun.execute.business.domain.Account">
+        select
+        <include refid="Base_Column_List" />
+        from account
+        WHERE region=#{region}
+        AND state="自用账号"
+        LIMIT #{num}
+    </select>
+
+    <!--updateStatesBySchedule进度100%时更新账号状态为成功-->
+    <update id="updateAccountState" parameterType="java.util.List">
+        UPDATE account
+        SET state = "转发调用"
+        WHERE
+        id
+        IN
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

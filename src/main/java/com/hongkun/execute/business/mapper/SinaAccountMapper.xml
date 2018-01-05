@@ -56,7 +56,7 @@
         )
     </select>
     <!--根据id来修改服务器的id-->
-    <update id="updateSinaAccount" >
+    <update id="updateSinaAccount">
         update sina_account
         <set>
             mstsc_id=#{mstscId}
@@ -101,7 +101,7 @@
         and sina_token_time > #{time}
         and (mstsc_id = #{mstscId} or mstsc_id = '')
         and sina_vps_region = #{region}
-        ORDER BY mstsc_id DESC 
+        ORDER BY mstsc_id DESC
         LIMIT 1
     </select>
 
@@ -171,5 +171,33 @@
         sina_error_code = #{errorCode}
     </delete>
 
+    <!--查询sina_account 中sina_error_code为空的数据-->
+    <select id="findSinaAccountNumAndRegion" resultType="com.hongkun.execute.common.task.SinaAccountNumAndRegion">
+      SELECT
+	COUNT(*) number,
+	sa.sina_vps_region AS region
+    FROM
+        sina_account sa
+    WHERE
+        sa.sina_error_code = ''
+    GROUP BY
+        sa.sina_vps_region
+    </select>
+
+    <!--将account中的账号给sinaAccount-->
+    <insert id="insertSinaAccount" useGeneratedKeys="true" parameterType="java.util.List">
+        insert into sina_account (
+        sina_account,
+        sina_pass,
+        sina_uid,
+        sina_vps_region
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.accountName},#{item.accountPassword},#{item.accountUid},#{item.region}
+            )
+        </foreach>
+    </insert>
 
 </mapper>

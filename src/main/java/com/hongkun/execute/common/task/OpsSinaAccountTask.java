@@ -25,6 +25,9 @@ public class OpsSinaAccountTask {
     @Resource
     private SinaErrorAccountService sinaErrorAccountService;
 
+    /**
+     * 移动错误的订单
+     */
     @Scheduled(fixedRate = 1000 * 20)
     public void dealErrorAccount() {
         //查询errorCode

@@ -1,6 +1,8 @@
 package com.hongkun.execute.business.dao;
 
+import com.hongkun.execute.business.domain.Account;
 import com.hongkun.execute.business.domain.SinaAccount;
+import com.hongkun.execute.common.task.SinaAccountNumAndRegion;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -67,4 +69,16 @@ public interface SinaAccountDao {
      * @param errorCode
      */
     void delErrorAccountByErrorCode(@Param("errorCode")String errorCode);
+
+    /**
+     * 查询sina_account 中sina_error_code为空的数据
+     * @return 数量以及地区
+     */
+    List<SinaAccountNumAndRegion> findSinaAccountNumAndRegion();
+
+    /**
+     * 将account中的账号给sinaAccount
+     * @param accounts
+     */
+    void insertSinaAccount(List<Account> accounts);
 }

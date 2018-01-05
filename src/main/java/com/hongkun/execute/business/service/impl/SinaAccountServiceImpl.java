@@ -2,9 +2,11 @@ package com.hongkun.execute.business.service.impl;
 
 import com.google.gson.Gson;
 import com.hongkun.execute.business.dao.SinaAccountDao;
+import com.hongkun.execute.business.domain.Account;
 import com.hongkun.execute.business.domain.SinaAccount;
 import com.hongkun.execute.business.service.SinaAccountService;
 import com.hongkun.execute.common.dto.GetSinaAccountDto;
+import com.hongkun.execute.common.task.SinaAccountNumAndRegion;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 
@@ -103,6 +105,16 @@ public class SinaAccountServiceImpl implements SinaAccountService {
     @Override
     public void delErrorAccountByErrorCode(String errorCode) {
         sinaAccountDao.delErrorAccountByErrorCode(errorCode);
+    }
+
+    @Override
+    public List<SinaAccountNumAndRegion> findSinaAccountNumAndRegion() {
+        return sinaAccountDao.findSinaAccountNumAndRegion();
+    }
+
+    @Override
+    public void insertSinaAccount(List<Account> accounts) {
+        sinaAccountDao.insertSinaAccount(accounts);
     }
 
 }
