@@ -1,0 +1,78 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.MstscConfigDao">
+    <sql id="Base_Column_List">
+		id,
+		mstsc_adsl_title,
+		mstsc_adsl_name,
+		mstsc_adsl_pass,
+		mstsc_end_time,
+		plan_name,
+		vps_prot,
+		vps_over_time,
+		vps_region,
+		version,
+		beizhu,
+		sina_run_time,
+		is_upload_account
+	 </sql>
+    <sql id="SelectAll_Where_Clause">
+        <where>
+            <if test="id != null and id != ''">
+                id = #{id}
+            </if>
+            <if test="mstscAdslTitle != null and mstscAdslTitle != ''">
+                and mstsc_adsl_title = #{mstscAdslTitle}
+            </if>
+            <if test="mstscAdslName != null and mstscAdslName != ''">
+                and mstsc_adsl_name = #{mstscAdslName}
+            </if>
+            <if test="mstscAdslPass != null and mstscAdslPass != ''">
+                and mstsc_adsl_pass = #{mstscAdslPass}
+            </if>
+            <if test="mstscEndTime != null and mstscEndTime != ''">
+                and mstsc_end_time = #{mstscEndTime}
+            </if>
+            <if test="planName != null and planName != ''">
+                and plan_name = #{planName}
+            </if>
+            <if test="vpsProt != null and vpsProt != ''">
+                and vps_prot = #{vpsProt}
+            </if>
+            <if test="vpsOverTime != null and vpsOverTime != ''">
+                and vps_over_time = #{vpsOverTime}
+            </if>
+            <if test="vpsRegion != null and vpsRegion != ''">
+                and vps_region = #{vpsRegion}
+            </if>
+            <if test="version != null and version != ''">
+                and version = #{version}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu = #{beizhu}
+            </if>
+            <if test="sinaRunTime != null and sinaRunTime != ''">
+                and sina_run_time = #{sinaRunTime}
+            </if>
+            <if test="isUploadAccount != null and isUploadAccount != ''">
+                and is_upload_account = #{isUploadAccount}
+            </if>
+        </where>
+    </sql>
+    <!--按ID查询一条记录  -->
+    <select id="getMstscConfigById" resultType="com.hongkun.execute.business.domain.MstscConfig">
+        select
+        <include refid="Base_Column_List"/>
+        from mstsc_config
+        where id = #{id}
+    </select>
+
+    <!--查询出所有的地址 -->
+    <select id="getAllRegions" resultType="string">
+		SELECT
+	      vps_region region
+        FROM
+	      mstsc_config
+	</select>
+
+
+</mapper>

@@ -30,7 +30,8 @@ public interface SinaAccountDao {
      * @param sinaVpsRegion
      * @return
      */
-    public List<SinaAccount> getSinaAccount(@Param("mstscId") String mstscId, @Param("sinaVpsRegion") String sinaVpsRegion);
+    public List<SinaAccount> getSinaAccount(@Param("mstscId") String mstscId,
+                                            @Param("sinaVpsRegion") String sinaVpsRegion);
 
     /**
      * 修改用户的sina状态
@@ -44,6 +45,8 @@ public interface SinaAccountDao {
     void updateSinaAccountById(@Param("id") Integer id,
                                @Param("sinaToken") String sinaToken,
                                @Param("sinaErrorCode") String sinaErrorCode,
+                               @Param("value") Integer value,
+                               @Param("codeTime") String codeTime,
                                @Param("sinaUid") String sinaUid,
                                @Param("sinaAccount") String sinaAccount,
                                @Param("forwardNum") Integer forwardNum);

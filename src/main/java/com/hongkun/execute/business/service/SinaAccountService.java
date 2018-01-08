@@ -35,7 +35,7 @@ public interface SinaAccountService {
      */
     void updateSinaAccount(Integer id,String sinaToken,String sinaErrorCode,String sinaUid,String sinaAccount,Integer forwardNum);
     
-    SinaAccount updatefindQueryOne(Map<String,Object> condition,String mstscId)  throws Exception;
+    SinaAccount updatefindQueryOne(Map<String,Object> condition,String mstscId,String from)  throws Exception;
 
     /**
      * 根据errorCode来查询订单

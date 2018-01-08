@@ -35,16 +35,77 @@ public class SinaAccount implements Serializable {
     private Integer gzNum;
     //
     private Integer zanNum;
-    
+
     private int forwardNum;
+/* `forward_error_code` varchar(222) NOT NULL DEFAULT '',
+  `forward_error_time` datetime DEFAULT NULL,
+  `fans_error_code` varchar(255) NOT NULL DEFAULT '',
+  `fans_error_time` datetime DEFAULT NULL,
+  `like_error_code` varchar(255) NOT NULL DEFAULT '',
+  `like_error_time` datetime DEFAULT NULL,
+  */
+    private String forwardErrorCode;
+    private Date forwardErrorTime;
+    private String fansErrorCode;
+    private Date fansErrorTime;
+    private String likeErrorCode;
+    private Date likeErrorTime;
+
+    public String getForwardErrorCode() {
+        return forwardErrorCode;
+    }
+
+    public void setForwardErrorCode(String forwardErrorCode) {
+        this.forwardErrorCode = forwardErrorCode;
+    }
+
+    public Date getForwardErrorTime() {
+        return forwardErrorTime;
+    }
+
+    public void setForwardErrorTime(Date forwardErrorTime) {
+        this.forwardErrorTime = forwardErrorTime;
+    }
+
+    public String getFansErrorCode() {
+        return fansErrorCode;
+    }
+
+    public void setFansErrorCode(String fansErrorCode) {
+        this.fansErrorCode = fansErrorCode;
+    }
+
+    public Date getFansErrorTime() {
+        return fansErrorTime;
+    }
+
+    public void setFansErrorTime(Date fansErrorTime) {
+        this.fansErrorTime = fansErrorTime;
+    }
+
+    public String getLikeErrorCode() {
+        return likeErrorCode;
+    }
+
+    public void setLikeErrorCode(String likeErrorCode) {
+        this.likeErrorCode = likeErrorCode;
+    }
+
+    public Date getLikeErrorTime() {
+        return likeErrorTime;
+    }
+
+    public void setLikeErrorTime(Date likeErrorTime) {
+        this.likeErrorTime = likeErrorTime;
+    }
 
     public int getForwardNum() {
-		return forwardNum;
-	}
+        return forwardNum;
+    }
 
-	public void setForwardNum(int forwardNum) {
-		this.forwardNum = forwardNum;
-	}
+    public void setForwardNum(int forwardNum) {
+        this.forwardNum = forwardNum;
+    }
 
     public Integer getId() {
         return id;

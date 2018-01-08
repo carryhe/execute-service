@@ -8,7 +8,6 @@ import com.hongkun.execute.common.dto.GetSinaAccountDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,7 +38,6 @@ public class SinaAccountAPI extends BaseController {
     @RequestMapping("saveSinaAccount")
     @ResponseBody
     public ResultView saveSinaAccount(String jsons,String security){
-        //@todo 进行加密的常量。
         String temp = jsons + con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
@@ -105,10 +103,10 @@ public class SinaAccountAPI extends BaseController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/findQueryOne",method = RequestMethod.POST)
+    @RequestMapping(value="/findQueryOne")
     @ResponseBody
-    public ResultView findQueryOne(String mstscId,String sinaVpsRegion,String security) throws Exception {
-        String temp = mstscId + sinaVpsRegion + con;
+    public ResultView findQueryOne(String mstscId,String sinaVpsRegion,String from,String security) throws Exception {
+        String temp = mstscId + sinaVpsRegion+from + con;
         boolean b = verifyAuthority(temp, security);
         if (!b){
             return error("权限认证失败");
@@ -122,7 +120,7 @@ public class SinaAccountAPI extends BaseController {
         condition.put("time", date);
         condition.put("mstscId", mstscId);
         condition.put("region", sinaVpsRegion);
-        SinaAccount sinaAccount = sinaAccountService.updatefindQueryOne(condition,mstscId);
-        return success(sinaAccount);
+        SinaAccount sinaAccount = sinaAccountService.updatefindQueryOne(condition,mstscId,from);
+        return success("success",sinaAccount);
     }
 }
