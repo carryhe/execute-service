@@ -121,6 +121,10 @@ public class SinaAccountAPI extends BaseController {
         condition.put("mstscId", mstscId);
         condition.put("region", sinaVpsRegion);
         SinaAccount sinaAccount = sinaAccountService.updatefindQueryOne(condition,mstscId,from);
-        return success("success",sinaAccount);
+        if (condition.isEmpty()){
+            return error("没有查到数据");
+        }else {
+            return success("success", sinaAccount);
+        }
     }
 }
