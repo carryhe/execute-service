@@ -54,8 +54,7 @@
         sa.sina_token=''
         OR TIMESTAMPDIFF(HOUR,sa.sina_token_time,NOW())>22
         )
-
-
+        AND sa.sina_error_code=''
     </select>
     <!--根据id来修改服务器的id-->
     <update id="updateSinaAccount">
