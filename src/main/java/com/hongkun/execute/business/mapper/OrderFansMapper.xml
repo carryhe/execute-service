@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.OrderFansDao">
+    <select id="getOrderFans" resultType="int">
+        SELECT
+            o.order_uid
+        FROM
+            order_fans_${flag} o
+        WHERE
+            o.account_uid = #{accountUid}
+    </select>
+
+    <!-- save  -->
+    <insert id="saveOrderFans" useGeneratedKeys="true" keyProperty='id'
+            parameterType="com.hongkun.execute.business.domain.OrderFans">
+        insert into order_fans_${flag}
+        (order_uid,account_uid)
+        values
+        (#{orderUid},#{accountUid})
+    </insert>
+
+</mapper>

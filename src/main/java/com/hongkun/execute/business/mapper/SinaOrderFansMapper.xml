@@ -1,0 +1,25 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongkun.execute.business.dao.SinaOrderFansDao">
+    <select id="getFansOrderByOid" resultType="com.hongkun.execute.common.dto.FansOrder">
+        SELECT
+            sof.id id,sof.oid oid
+        FROM
+            sina_order_fans sof
+        WHERE
+            sof.amount_state = '执行中'
+        <if test="list !=null and list.size()>0">
+            AND sof.oid NOT IN
+            <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <!-- 更改订单状态,时间 -->
+    <update id="updateState" >
+        update sina_order_fans  SET amount_state=#{flag},stop_time=now(),finish_time=now()
+        where id=#{id}
+    </update>
+
+
+</mapper>
