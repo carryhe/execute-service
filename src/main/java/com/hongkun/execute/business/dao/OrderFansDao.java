@@ -18,12 +18,12 @@ public interface OrderFansDao {
      * @param accountUid
      * @return
      */
-    List<Integer> getOrderFans(@Param("accountUid") String accountUid, @Param("flag") Integer flag);
+    List<String> getOrderFans(@Param("accountUid") String accountUid, @Param("flag") Long flag);
 
     /**
      * 存入到 order_fans表中
      */
-    void saveOrderFans(@Param("orderUid") String orderUid, @Param("accountUid") String accountUid, @Param("flag") Integer flag);
+    void saveOrderFans(@Param("orderUid") String orderUid, @Param("accountUid") String accountUid, @Param("flag") Long flag);
 
 
 }

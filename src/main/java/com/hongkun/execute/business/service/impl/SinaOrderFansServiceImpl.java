@@ -31,8 +31,8 @@ public class SinaOrderFansServiceImpl implements SinaOrderFansService {
     public Map<Integer, String> getFansOrder(String accountUid) {
         Map<Integer, String> result = null;
         //完成的订单
-        Integer flag = Integer.parseInt(accountUid) % 2000;
-        List<Integer> finishids = orderFansDao.getOrderFans(accountUid, flag);
+        long flag = Long.parseLong(accountUid) % 2000;
+        List<String> finishids = orderFansDao.getOrderFans(accountUid, flag);
         //更换数据源
         DataSourceContextHolder.setDbType("orderdataSource");
         List<FansOrder> fansOrders = sinaOrderFansDao.getFansOrderByOid(finishids);
@@ -49,7 +49,7 @@ public class SinaOrderFansServiceImpl implements SinaOrderFansService {
     public void saveOrderFans(Map<String, String> result) {
 
         String accountUid = result.get("accountUid");
-        Integer flag = Integer.parseInt(accountUid) % 2000;
+        Long flag = Long.parseLong(accountUid) % 2000;
         orderFansDao.saveOrderFans( result.get("orderUid"),accountUid,flag);
     }
 

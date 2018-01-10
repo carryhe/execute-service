@@ -18,7 +18,7 @@ public interface SinaOrderFansDao {
      * 根据oid来获取id
      * @return
      */
-    List<FansOrder> getFansOrderByOid(List<Integer> ids);
+    List<FansOrder> getFansOrderByOid(List<String> ids);
 
     void updateState(@Param("flag") String flag, @Param("id") Integer id);
 }
